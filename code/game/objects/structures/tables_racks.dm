@@ -799,8 +799,8 @@
 			tableclimber = null
 			return 1
 	tableclimber = null
-	
-	/obj/structure/table/MouseDrop_T(atom/movable/O, mob/user)
+
+	/obj/structure/table/MouseDrop_T(atom/movable/O,mob/user)
 	if(ismob(O) && user == O && ishuman(user))
 		if(user.canmove)
 			climb_table(user)
