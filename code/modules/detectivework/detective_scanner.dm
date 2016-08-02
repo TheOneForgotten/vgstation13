@@ -150,10 +150,16 @@
 
 		//Blood
 		if (blood_DNA_found.len)
-			to_chat(user, "<span class='notice'>Blood found on [A]. Analysing...</span>")
-			spawn(15)
+			if (istype(A,/obj/effect/decal/cleanable/cum))
+				to_chat(user, "<span class='notice'>Sperm detected. Analysing...</span>")
+				sleep(15)
 				for(var/blood in blood_DNA_found)
-					to_chat(user, "Blood type: <span class='warning'>[blood_DNA_found[blood]] \t </span>DNA: <span class='warning'>[blood]</span>")
+					to_chat(user, " DNA: <font color='red'>[blood]</font>")
+			else
+				to_chat(user, "<span class='notice'>Blood found on [A]. Analysing...</span>")
+				spawn(15)
+					for(var/blood in blood_DNA_found)
+						to_chat(user, "Blood type: <span class='warning'>[blood_DNA_found[blood]] \t </span>DNA: <span class='warning'>[blood]</span>")
 
 		if(prob(80) || !fingerprints_found.len)
 			user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\

@@ -13,6 +13,7 @@ var/global/list/whitelisted_species = list(
     "Skellington",
     "Skeletal Vox",
     "Tajaran",
+    "Vulpkanin",
     "Grey",
     "Muton",
     "Skrell",
@@ -140,6 +141,103 @@ var/global/list/whitelisted_species = list(
 	var/move_speed_mod = 0 //Higher value is slower, lower is faster.
 	var/can_be_hypothermic = 1
 	var/has_sweat_glands = 1
+	var/genitals = 0
+	var/anus = 0
+
+	var/list/male_scream_sound = list(
+	'honk/sound/emotes/scream/male1.ogg'
+	)
+	var/list/female_scream_sound = list(
+	'honk/sound/emotes/scream/female1.ogg'
+	)
+	var/list/male_groan_sound = list(
+	'honk/sound/emotes/groan/male1.ogg',
+	'honk/sound/emotes/groan/male2.ogg',
+	'honk/sound/emotes/groan/male3.ogg',
+	'honk/sound/emotes/groan/male4.ogg'
+	)
+	var/list/female_groan_sound = list(
+	'honk/sound/emotes/groan/female1.ogg',
+	'honk/sound/emotes/groan/female2.ogg',
+	'honk/sound/emotes/groan/female3.ogg',
+	'honk/sound/emotes/groan/female4.ogg'
+	)
+	var/list/male_laugh_sound = list(
+	'honk/sound/emotes/laugh/male1.ogg',
+	'honk/sound/emotes/laugh/male2.ogg',
+	'honk/sound/emotes/laugh/male3.ogg',
+	)
+	var/list/female_laugh_sound = list(
+	'honk/sound/emotes/laugh/female1.ogg',
+	'honk/sound/emotes/laugh/female2.ogg',
+	'honk/sound/emotes/laugh/female3.ogg',
+	)
+	var/list/male_sigh_sound = list(
+	'honk/sound/emotes/sigh/male1.ogg'
+	)
+	var/list/female_sigh_sound = list(
+	'honk/sound/emotes/sigh/female1.ogg',
+	)
+	var/list/male_sneeze_sound = list(
+	'honk/sound/emotes/sneeze/male1.ogg'
+	)
+	var/list/female_sneeze_sound = list(
+	'honk/sound/emotes/sneeze/female1.ogg',
+	)
+	var/list/male_yawn_sound = list(
+	'honk/sound/emotes/yawn/male1.ogg'
+	)
+	var/list/female_yawn_sound = list(
+	//'honk/sound/emotes/yawn/female1.ogg',
+	)
+	var/list/male_cry_sound = list(
+	//'honk/sound/emotes/cry/male1.ogg'
+	)
+	var/list/female_cry_sound = list(
+	//'honk/sound/emotes/cry/female1.ogg',
+	)
+	var/list/male_burp_sound = list(
+	'honk/sound/emotes/burp/male1.ogg'
+	)
+	var/list/female_burp_sound = list(
+	'honk/sound/emotes/burp/female1.ogg',
+	)
+	var/list/male_cough_sound = list(
+	'honk/sound/emotes/cough/male1.ogg',
+	'honk/sound/emotes/cough/male2.ogg',
+	'honk/sound/emotes/cough/male3.ogg',
+	)
+	var/list/female_cough_sound = list(
+	'honk/sound/emotes/cough/female1.ogg',
+	'honk/sound/emotes/cough/female2.ogg',
+	'honk/sound/emotes/cough/female3.ogg',
+	)
+	var/list/male_giggle_sound = list(
+	//'honk/sound/emotes/giggle/male1.ogg',
+	//'honk/sound/emotes/giggle/male2.ogg',
+	)
+	var/list/female_giggle_sound = list(
+	'honk/sound/emotes/giggle/female1.ogg',
+	'honk/sound/emotes/giggle/female2.ogg',
+	)
+	var/list/male_moan_sound = list(
+	//'honk/sound/emotes/moan/male1.ogg'
+	)
+	var/list/female_moan_sound = list(
+	//'honk/sound/emotes/moan/female1.ogg',
+	)
+	var/list/male_sniff_sound = list(
+	'honk/sound/emotes/sniff/male1.ogg'
+	)
+	var/list/female_sniff_sound = list(
+	'honk/sound/emotes/sniff/female1.ogg',
+	)
+	var/list/male_snore_sound = list(
+	'honk/sound/emotes/snore/male1.ogg'
+	)
+	var/list/female_snore_sound = list(
+	'honk/sound/emotes/snore/female1.ogg',
+	)
 
 /datum/species/New()
 	..()
@@ -443,6 +541,30 @@ var/global/list/whitelisted_species = list(
 		return ..(speech, H)
 
 	return ..(filter.FilterSpeech(speech), H)
+
+/datum/species/vulpkanin
+	name = "Vulpkanin"
+	icobase = 'icons/mob/human_races/r_vulpkanin.dmi'
+	deform = 'icons/mob/human_races/r_vulpkanin.dmi'
+	default_language = "Galactic Common"
+	language = "Canilunzt"
+	tail = "vulptail"
+	darksight = 8
+
+	flags = IS_WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_TAIL
+	flesh_color = "#966464"
+
+	has_organ = list(
+		"heart" =    /datum/organ/internal/heart,
+		"lungs" =    /datum/organ/internal/lungs,
+		"liver" =    /datum/organ/internal/liver,
+		"kidneys" =  /datum/organ/internal/kidney,
+		"brain" =    /datum/organ/internal/brain,
+		"appendix" = /datum/organ/internal/appendix,
+		"eyes" =     /datum/organ/internal/eyes,
+	)
+
+//		"liver" =    /obj/item/organ/internal/liver/vulpkanin,
 
 /datum/species/grey // /vg/
 	name = "Grey"
