@@ -187,6 +187,10 @@
 				if (!muzzled)
 					message = "<B>[src]</B> coughs!"
 					m_type = HEARABLE
+					if(gender == FEMALE)
+						playsound(src.loc, pick(species.female_cough_sound), 60, 0)
+					else
+						playsound(src.loc, pick(species.male_cough_sound), 60, 0)
 				else
 					message = "<B>[src]</B> makes a strong noise."
 					m_type = HEARABLE
@@ -240,6 +244,10 @@
 				if (!muzzled)
 					message = "<B>[src]</B> giggles."
 					m_type = HEARABLE
+					if(gender == FEMALE)
+						playsound(src.loc, pick(species.female_giggle_sound), 60, 0)
+					else
+						playsound(src.loc, pick(species.male_giggle_sound), 60, 0)
 				else
 					message = "<B>[src]</B> makes a noise."
 					m_type = HEARABLE
@@ -303,6 +311,10 @@
 				if (!muzzled)
 					message = "<B>[src]</B> cries."
 					m_type = HEARABLE
+					if(gender == FEMALE)
+						playsound(src.loc, pick(species.female_cry_sound), 60, 0)
+					else
+						playsound(src.loc, pick(species.male_cry_sound), 60, 0)
 				else
 					message = "<B>[src]</B> makes a weak noise. \He frowns."
 					m_type = HEARABLE
@@ -315,6 +327,10 @@
 				if (!muzzled)
 					message = "<B>[src]</B> sighs."
 					m_type = HEARABLE
+					if(gender == FEMALE)
+						playsound(src.loc, pick(species.female_sigh_sound), 60, 0)
+					else
+						playsound(src.loc, pick(species.male_sigh_sound), 60, 0)
 				else
 					message = "<B>[src]</B> makes a weak noise."
 					m_type = HEARABLE
@@ -327,6 +343,10 @@
 				if (!muzzled)
 					message = "<B>[src]</B> laughs."
 					m_type = HEARABLE
+					if(gender == FEMALE)
+						playsound(src.loc, pick(species.female_laugh_sound), 60, 0)
+					else
+						playsound(src.loc, pick(species.male_laugh_sound), 60, 0)
 				else
 					message = "<B>[src]</B> makes a noise."
 					m_type = HEARABLE
@@ -356,6 +376,10 @@
 				if (!muzzled)
 					message = "<B>[src]</B> groans!"
 					m_type = HEARABLE
+					if(gender == FEMALE)
+						playsound(src.loc, pick(species.female_groan_sound), 60, 0)
+					else
+						playsound(src.loc, pick(species.male_groan_sound), 60, 0)
 				else
 					message = "<B>[src]</B> makes a loud noise."
 					m_type = HEARABLE
@@ -434,6 +458,7 @@
 
 		if ("shiver")
 			message = "<B>[src]</B> shivers."
+			do_fucking_animation(src)
 			m_type = HEARABLE
 			if(miming)
 				m_type = VISIBLE
@@ -454,6 +479,10 @@
 				if (!muzzled)
 					message = "<B>[src]</B> sneezes."
 					m_type = HEARABLE
+					if(gender == FEMALE)
+						playsound(src.loc, pick(species.female_sneeze_sound), 60, 0)
+					else
+						playsound(src.loc, pick(species.male_sneeze_sound), 60, 0)
 				else
 					message = "<B>[src]</B> makes a strange noise."
 					m_type = HEARABLE
@@ -463,6 +492,10 @@
 			m_type = HEARABLE
 			if(miming)
 				m_type = VISIBLE
+			if(gender == FEMALE)
+				playsound(src.loc, pick(species.female_sniff_sound), 60, 0)
+			else
+				playsound(src.loc, pick(species.male_sniff_sound), 60, 0)
 
 		if ("snore")
 			if (miming)
@@ -472,6 +505,10 @@
 				if (!muzzled)
 					message = "<B>[src]</B> snores."
 					m_type = HEARABLE
+					if(gender == FEMALE)
+						playsound(src.loc, pick(species.female_snore_sound), 60, 0)
+					else
+						playsound(src.loc, pick(species.male_snore_sound), 60, 0)
 				else
 					message = "<B>[src]</B> makes a noise."
 					m_type = HEARABLE
@@ -502,6 +539,10 @@
 				m_type = HEARABLE
 				if(miming)
 					m_type = VISIBLE
+				if(gender == FEMALE)
+					playsound(src.loc, pick(species.female_yawn_sound), 60, 0)
+				else
+					playsound(src.loc, pick(species.male_yawn_sound), 60, 0)
 
 		if ("collapse")
 			Paralyse(2)
@@ -569,16 +610,19 @@
 						if (auto == 1)
 							if(world.time-lastScream >= 30)//prevent scream spam with things like poly spray
 								message = "<B>[src]</B> screams in agony!"
-								var/list/screamSound = list('sound/misc/malescream1.ogg', 'sound/misc/malescream2.ogg', 'sound/misc/malescream3.ogg', 'sound/misc/malescream4.ogg', 'sound/misc/malescream5.ogg', 'sound/misc/wilhelm.ogg', 'sound/misc/goofy.ogg')
-								if (src.gender == FEMALE) //Females have their own screams. Trannys be damned.
-									screamSound = list('sound/misc/femalescream1.ogg', 'sound/misc/femalescream2.ogg', 'sound/misc/femalescream3.ogg', 'sound/misc/femalescream4.ogg', 'sound/misc/femalescream5.ogg')
-								var/scream = pick(screamSound)//AUUUUHHHHHHHHOOOHOOHOOHOOOOIIIIEEEEEE
-								playsound(get_turf(src), scream, 50, 0)
 								m_type = HEARABLE
 								lastScream = world.time
+								if(gender == FEMALE)
+									playsound(src.loc, pick(species.female_laugh_sound), 60, 0)
+								else
+									playsound(src.loc, pick(species.male_laugh_sound), 60, 0)
 						else
 							message = "<B>[src]</B> screams!"
 							m_type = HEARABLE
+							if(gender == FEMALE)
+								playsound(src.loc, pick(species.female_scream_sound), 60, 0)
+							else
+								playsound(src.loc, pick(species.male_scream_sound), 60, 0)
 					else
 						message = "<B>[src]</B> makes a very loud noise."
 						m_type = HEARABLE

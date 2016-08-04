@@ -161,6 +161,8 @@
 			msg += "<span class='warning'>[t_He] [t_has] [bicon(glasses)] [glasses.gender==PLURAL?"some":"a"] blood-stained [glasses] covering [t_his] eyes!</span>\n"
 		else
 			msg += "[t_He] [t_has] [bicon(glasses)] \a [glasses] covering [t_his] eyes.\n"
+	else if (!glasses && druggy > 0)
+		msg += "<span class='warning'>Pupils are unusually huge!</span>\n"
 
 	//ears
 	if(ears && !(slot_ears in obscured))
@@ -179,6 +181,9 @@
 			msg += "<span class='warning'>[t_He] [t_is] wearing [bicon(wear_id)] \a [wear_id] yet something doesn't seem right...</span>\n"
 		else*/
 		msg += "[t_He] [t_is] wearing [bicon(wear_id)] \a [wear_id].\n"
+
+	if(is_nude() && gender == MALE && species.genitals)
+		msg += "<B>Penis size: [potenzia].</B>\n"
 
 	switch(jitteriness)
 		if(JITTER_HIGH to INFINITY)
