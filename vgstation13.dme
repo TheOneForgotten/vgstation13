@@ -1986,7 +1986,7 @@
 #include "interface\web\interface.dms"
 #include "maprendering\maprendering.dm"
 #include "maps\_map.dm"
-#include "maps\taxistation.dm"
+#include "maps\tgstation.dm"
 #include "maps\defficiency\areas.dm"
 #include "maps\defficiency\pipes.dm"
 #include "maps\goon\code\datums\browserOutput.dm"
